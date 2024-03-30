@@ -65,8 +65,8 @@ const UserMenu: React.FC<Props> = ({user}) => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
         >
-            <MenuItem component={NavLink} to="/">Add new photo</MenuItem>
-            <MenuItem component={NavLink} to={"/"}>My photos</MenuItem>
+            <MenuItem component={NavLink} to="/new-picture">Add new photo</MenuItem>
+            <MenuItem component={NavLink} to={""}>My photos</MenuItem>
         </Menu>
         <Button onClick={logOuted}>Logout<ExitToAppIcon/>
           </Button>

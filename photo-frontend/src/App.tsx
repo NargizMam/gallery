@@ -6,6 +6,7 @@ import {Route, Routes} from "react-router-dom";
 import Footer from "./components/Footer/Footer.tsx";
 import Home from "./features/gallery/Home.tsx";
 import UsersGallery from "./features/gallery/UsersGallery.tsx";
+import NewPicture from "./features/gallery/NewPicture.tsx";
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
             <Container sx={{ marginBottom: '150px' }}>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
+                    <Route path="/new-picture" element={<NewPicture/>}/>
                     <Route path="/register" element={<Register/>}/>
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/usersGallery" element={<UsersGallery/>}/>

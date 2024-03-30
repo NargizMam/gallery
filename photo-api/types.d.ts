@@ -24,8 +24,12 @@ export interface Author {
 export interface PictureApi {
   _id: string;
   title: string;
-  image: string;
-  author: Author;
+  image: string | null;
+  user: Author;
   createdAt: string;
 }
-export type PictureMutation = Omit<PictureApi, "_id" | "createdAt">
+export interface PictureMutation {
+  title: string;
+  image: string | null;
+  user: string;
+}

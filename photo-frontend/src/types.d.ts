@@ -35,3 +35,14 @@ export interface ValidationError {
 export interface GlobalError {
     error: string
 }
+export interface PictureApi {
+    _id: string;
+    title: string;
+    image: string;
+    user: Author;
+    createdAt: string;
+}
+export interface PictureMutation {
+    title: string;
+    image: string | null;
+}

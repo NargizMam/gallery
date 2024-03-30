@@ -4,7 +4,7 @@ import User from './User';
 const Schema = mongoose.Schema;
 
 const PictureSchema = new Schema({
-    author: {
+    user: {
         type: String,
         required: true,
         ref: 'User',

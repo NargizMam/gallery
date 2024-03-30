@@ -47,37 +47,37 @@ const run = async () => {
       {
         title: 'Tree at sunset',
         image: 'fixtures/Tree.jpeg',
-        author: user1._id,
+        user: user1._id,
         createdAt: new Date()
       },
       {
           title: 'Girl under the moon',
           image: 'fixtures/girl.jpeg',
-          author: user2._id,
+          user: user2._id,
           createdAt: new Date()
       },
       {
           title: 'Beautiful height',
           image: 'fixtures/Mountain.jpeg',
-          author: user1._id,
+          user: user1._id,
           createdAt: new Date()
       },
       {
           title: 'O, Paris',
           image: 'fixtures/Paris.jpeg',
-          author: user2._id,
+          user: user2._id,
           createdAt: new Date()
       },
       {
           title: 'Sea at sunset',
           image: 'fixtures/See.jpeg',
-          author: user1._id,
+          user: user1._id,
           createdAt: new Date()
       },
       {
           title: ' Tree in a drop of water',
           image: 'fixtures/water.jpeg',
-          author: user2._id,
+          user: user2._id,
           createdAt: new Date()
       },
   )

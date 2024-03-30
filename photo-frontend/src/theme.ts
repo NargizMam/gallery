@@ -41,13 +41,6 @@ const theme = createTheme({
         },
       },
     },
-    MuiCard: {
-      styleOverrides: {
-        root: {
-          margin: '10px',
-        },
-      },
-    },
     MuiCardMedia: {
       styleOverrides: {
         root: {
@@ -55,7 +48,7 @@ const theme = createTheme({
           borderRadius: '10px',
           transition: 'transform 0.3s',
           '&:hover': {
-            transform: 'scale(1.1)', // Увеличиваем размер при наведении
+            transform: 'scale(1.1)',
           },
         },
       },

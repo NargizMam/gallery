@@ -34,9 +34,9 @@ export const getPicturesList = createAsyncThunk<PictureApi[], string | undefined
     async (id, {rejectWithValue}) => {
         try {
             let response;
-            if(id){
+            if (id) {
                 response = await axiosApi.get<PictureApi[]>(`/pictures?users=${id}`);
-            }else{
+            } else {
                 response = await axiosApi.get<PictureApi[]>('/pictures');
             }
             return response.data;

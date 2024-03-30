@@ -6,6 +6,7 @@ import {useAppDispatch, useAppSelector} from "../../app/hooks.ts";
 import {useNavigate} from "react-router-dom";
 import {selectPicturesCreating} from "./gallerySlice.ts";
 import {createPicture, getPicturesList} from "./galleryThunk.ts";
+import {openErrorMessage, openSuccessMessage} from "../WarningMessage/warningMessageSlice.ts";
 
 
 const initialState = {
@@ -22,9 +23,9 @@ const NewPicture = () => {
 
 
     const changeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         setPicture(prevState => {
-            return { ...prevState, [name]: value };
+            return {...prevState, [name]: value};
         });
     };
     const fieldsError = !picture.title || !picture.image;
@@ -44,15 +45,14 @@ const NewPicture = () => {
     });
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        try{
+        try {
             await dispatch(createPicture(picture));
-            // dispatch(openSuccessMessage());
+            dispatch(openSuccessMessage());
             dispatch(getPicturesList());
             navigate('/');
-        }catch (e) {
-            // dispatch(openErrorMessage());
+        } catch (e) {
+            dispatch(openErrorMessage());
         }
-
     };
 
     return (

@@ -5,6 +5,7 @@ import {FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE} from 'redux-persist/e
 import persistStore from 'redux-persist/es/persistStore';
 import {usersReducer} from "../features/users/usersSlice.ts";
 import {PicturesReducer} from "../features/gallery/gallerySlice.ts";
+import {warningMessageReducer} from "../features/WarningMessage/warningMessageSlice.ts";
 
 const usersPersistConfig = {
   key: 'cocktails:users',
@@ -15,6 +16,7 @@ const usersPersistConfig = {
 const rootReducer = combineReducers({
   users: persistReducer(usersPersistConfig, usersReducer),
   pictures: PicturesReducer,
+  warningMessage: warningMessageReducer,
 });
 export const store = configureStore({
   reducer: rootReducer,

@@ -1,5 +1,5 @@
 import { Model } from 'mongoose';
-import {resolveSrv} from "dns";
+import { resolveSrv } from 'dns';
 
 export interface UserFields {
   email: string;
@@ -19,7 +19,7 @@ export type UserModal = Model<UserFields, {}, UserMethods>;
 
 export interface Author {
   _id: string;
-  displayName: string
+  displayName: string;
 }
 export interface PictureApi {
   _id: string;

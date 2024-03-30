@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import config from './config';
 import User from './models/User';
-import Picture from "./models/Picture";
+import Picture from './models/Picture';
 
 const dropCollection = async (db: mongoose.Connection, collectionName: string) => {
   try {
@@ -44,44 +44,43 @@ const run = async () => {
     },
   );
   await Picture.create(
-      {
-        title: 'Tree at sunset',
-        image: 'fixtures/Tree.jpeg',
-        user: user1._id,
-        createdAt: new Date()
-      },
-      {
-          title: 'Girl under the moon',
-          image: 'fixtures/girl.jpeg',
-          user: user2._id,
-          createdAt: new Date()
-      },
-      {
-          title: 'Beautiful height',
-          image: 'fixtures/Mountain.jpeg',
-          user: user1._id,
-          createdAt: new Date()
-      },
-      {
-          title: 'O, Paris',
-          image: 'fixtures/Paris.jpeg',
-          user: user2._id,
-          createdAt: new Date()
-      },
-      {
-          title: 'Sea at sunset',
-          image: 'fixtures/See.jpeg',
-          user: user1._id,
-          createdAt: new Date()
-      },
-      {
-          title: ' Tree in a drop of water',
-          image: 'fixtures/water.jpeg',
-          user: user2._id,
-          createdAt: new Date()
-      },
-  )
-
+    {
+      title: 'Tree at sunset',
+      image: 'fixtures/Tree.jpeg',
+      user: user1._id,
+      createdAt: new Date(),
+    },
+    {
+      title: 'Girl under the moon',
+      image: 'fixtures/girl.jpeg',
+      user: user2._id,
+      createdAt: new Date(),
+    },
+    {
+      title: 'Beautiful height',
+      image: 'fixtures/Mountain.jpeg',
+      user: user1._id,
+      createdAt: new Date(),
+    },
+    {
+      title: 'O, Paris',
+      image: 'fixtures/Paris.jpeg',
+      user: user2._id,
+      createdAt: new Date(),
+    },
+    {
+      title: 'Sea at sunset',
+      image: 'fixtures/See.jpeg',
+      user: user1._id,
+      createdAt: new Date(),
+    },
+    {
+      title: ' Tree in a drop of water',
+      image: 'fixtures/water.jpeg',
+      user: user2._id,
+      createdAt: new Date(),
+    },
+  );
 
   await db.close();
 };

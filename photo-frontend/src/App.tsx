@@ -7,9 +7,15 @@ import Footer from "./components/Footer/Footer.tsx";
 import Home from "./features/gallery/Home.tsx";
 import UsersGallery from "./features/gallery/UsersGallery.tsx";
 import NewPicture from "./features/gallery/NewPicture.tsx";
+import WarningMessage from "./features/WarningMessage/WarningMessages.tsx";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.tsx";
+import {useAppSelector} from "./app/hooks.ts";
+import { selectUser } from "./features/users/usersSlice.ts";
 
 
 const App = () => {
+    const user = useAppSelector(selectUser);
+
     return(
         <>
             <CssBaseline/>
@@ -17,9 +23,13 @@ const App = () => {
                 <AppToolbar/>
             </header>
             <Container sx={{ marginBottom: '150px' }}>
+                <WarningMessage/>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
-                    <Route path="/new-picture" element={<NewPicture/>}/>
+                    <Route path="/new-picture"  element={(
+                        <ProtectedRoute isAllowed={!!user}>
+                            <NewPicture/>
+                        </ProtectedRoute>)}/>
                     <Route path="/register" element={<Register/>}/>
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/usersGallery" element={<UsersGallery/>}/>

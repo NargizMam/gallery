@@ -3,11 +3,13 @@ import GalleryCard from "./GalleryCard";
 import {useAppDispatch, useAppSelector} from "../../app/hooks.ts";
 import {useEffect} from "react";
 import {getPicturesList} from "./galleryThunk.ts";
-import {selectPicturesList} from "./gallerySlice.ts";
+import {selectPicturesList, selectPicturesListFetching} from "./gallerySlice.ts";
+import Loading from "../../components/UI/Loading/Loading.tsx";
 
 const Home = () => {
     const dispatch = useAppDispatch();
     const picturesList = useAppSelector(selectPicturesList);
+    const fetchingLoading = useAppSelector(selectPicturesListFetching);
 
     useEffect(() => {
         dispatch(getPicturesList());
@@ -18,6 +20,7 @@ const Home = () => {
             <Typography variant="h4" align="center" gutterBottom>
                 Импрессии в Объективе: <br /> "Погружение в Мир Фотографий"
             </Typography>
+            {fetchingLoading && <Loading/>}
             <Grid container>
                 {picturesList.map(picture =>(
                     <GalleryCard
@@ -25,7 +28,8 @@ const Home = () => {
                         id={picture._id}
                         title={picture.title}
                         image={picture.image}
-                        author={picture.user}
+                        user={picture.user}
+
                     />
                 ))}
             </Grid>

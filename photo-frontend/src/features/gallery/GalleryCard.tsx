@@ -1,21 +1,25 @@
 import {Card, CardActionArea, CardContent, CardMedia, Dialog, DialogContent, IconButton} from "@mui/material";
 import Typography from "@mui/material/Typography";
-import { NavLink } from "react-router-dom";
 import {apiURL} from "../../constants.ts";
 import React, {useState} from "react";
-import { Close } from "@mui/icons-material";
+import {useAppDispatch} from "../../app/hooks.ts";
+import {NavLink, useNavigate} from "react-router-dom";
+import {getPicturesList} from "./galleryThunk.ts";
+import { Author } from "../../types";
 
 interface Props {
     title: string;
     image: string;
-    author: string;
+    author?: Author;
     id: string;
 }
 
 
 const GalleryCard: React.FC<Props> = ({id, title, author, image}) => {
-    const [open, setOpen] = useState(false);
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
+    const [open, setOpen] = useState(false);
     let cardImage;
     if (image) {
         if (!image.includes('fixtures')) {
@@ -32,7 +36,9 @@ const GalleryCard: React.FC<Props> = ({id, title, author, image}) => {
     const handleClose = () => {
         setOpen(false);
     };
-
+    const openUsersGallery = () => {
+        navigate();
+    }
     return (
         <Card sx={{width: '30%',height: '250px', m: 2, p: 2, alignItems: 'center', textDecoration: 'none', borderRadius: 2}}>
             <CardActionArea onClick={handleOpen}>
@@ -41,16 +47,21 @@ const GalleryCard: React.FC<Props> = ({id, title, author, image}) => {
                     sx={{width:'95%', height: 175, borderRadius: 1}}
                     image={cardImage}
                     title={title}/>
-                <CardContent>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        Author:
-                        <Typography component={NavLink} to={'/'}>
-                            {author}
-                        </Typography>
-                    </Typography>
-                </CardContent>
             </CardActionArea>
-
+                {author &&(
+                    <CardContent>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            Author:
+                            <Typography
+                                component={NavLink}
+                                to={`/usersGallery?users=${author?._id}`}
+                                variant="h6"
+                            >
+                                {author.displayName}
+                            </Typography>
+                        </Typography>
+                    </CardContent>
+                )}
             <Dialog open={open} onClose={handleClose} sx={{
                 display: 'flex',
                 alignItems: 'center',
@@ -67,6 +78,8 @@ const GalleryCard: React.FC<Props> = ({id, title, author, image}) => {
                     <img src={cardImage} width='600px' style={{margin: '5px'}} alt={title} />
                 </DialogContent>
             </Dialog>
+
+
         </Card>
     );
 };

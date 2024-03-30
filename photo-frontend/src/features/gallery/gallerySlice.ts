@@ -4,7 +4,7 @@ import {RootState} from "../../app/store.ts";
 import {createPicture, deletePicture, getPicturesList} from "./galleryThunk.ts";
 
 interface PicturesState {
-    PicturesList: PictureApi[];
+    picturesList: PictureApi[];
     fetchLoading: boolean;
     creating: boolean,
     deleting: boolean;
@@ -12,7 +12,7 @@ interface PicturesState {
     errorMessage: GlobalError | null;
 }
 const initialState: PicturesState = {
-    PicturesList: [],
+    picturesList: [],
     fetchLoading: false,
     creating: false,
     deleting: false,
@@ -27,13 +27,15 @@ const PicturesSlice = createSlice({
         builder
             .addCase(getPicturesList.pending, (state) => {
                 state.fetchLoading = true;
+                state.picturesList = [];
             })
-            .addCase(getPicturesList.fulfilled, (state, {payload: Pictures}) => {
+            .addCase(getPicturesList.fulfilled, (state, {payload: pictures}) => {
                 state.fetchLoading = false;
-                state.PicturesList = Pictures;
+                state.picturesList = pictures;
             })
             .addCase(getPicturesList.rejected, (state) => {
                 state.fetchLoading = false;
+                state.picturesList = [];
             })
             .addCase(createPicture.pending, (state) => {
                 state.creating = true;
@@ -71,7 +73,7 @@ const PicturesSlice = createSlice({
 
 export const PicturesReducer = PicturesSlice.reducer;
 
-export const selectPicturesList = (state: RootState) => state.pictures.PicturesList
+export const selectPicturesList = (state: RootState) => state.pictures.picturesList
 export const selectPicturesListFetching = (state: RootState) => state.pictures.fetchLoading;
 export const selectPicturesCreating = (state: RootState) => state.pictures.creating;
 

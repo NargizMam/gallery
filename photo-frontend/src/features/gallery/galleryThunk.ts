@@ -31,15 +31,16 @@ export const createPicture = createAsyncThunk<string, PictureMutation, { rejectV
 
 export const getPicturesList = createAsyncThunk<PictureApi[], string | undefined, { rejectValue: GlobalError }>(
     'pictures/fetch',
-    async (userName, {rejectWithValue}) => {
+    async (id, {rejectWithValue}) => {
         try {
             let response;
-            if(userName){
-                response = await axiosApi.get<PictureApi[]>(`/pictures?users=${userName}`);
-                return response.data;
+            if(id){
+                response = await axiosApi.get<PictureApi[]>(`/pictures?users=${id}`);
+            }else{
+                response = await axiosApi.get<PictureApi[]>('/pictures');
             }
-            response = await axiosApi.get<PictureApi[]>('/pictures');
             return response.data;
+
         } catch (e) {
             if (isAxiosError(e) && e.response) {
                 return rejectWithValue(e.response.data);

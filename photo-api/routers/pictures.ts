@@ -5,19 +5,23 @@ import client from '../middleware/client';
 import permit from '../middleware/permit';
 import Picture from "../models/Picture";
 import {PictureApi, PictureMutation} from "../types";
+import {Types} from "mongoose";
 
 const picturesRouter = express.Router();
 
-picturesRouter.get('/', client, async (_req: RequestWithUser, res, next) => {
-    // const userName = req.query.authors;
+picturesRouter.get('/', client, async (req: RequestWithUser, res, next) => {
+    let authorId: Types.ObjectId | undefined;
+
     let picturesList: PictureApi[] = [];
     try {
-            picturesList = await Picture.find().populate('user', 'displayName');
-
-        // if (userName) {
-        //     picturesList = await Picture.find({ user: user?._id.toString() });
-        // }
+        if (req.query.users) {
+            authorId = new Types.ObjectId(req.query.users  as string)
+            picturesList = await Picture.find({ user: authorId}).populate('user', 'displayName');
+            return res.send(picturesList);
+        }
+        picturesList = await Picture.find().populate('user', 'displayName');
         return res.send(picturesList);
+
     } catch (e) {
         next(e);
     }

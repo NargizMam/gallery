@@ -35,6 +35,10 @@ export interface ValidationError {
 export interface GlobalError {
     error: string
 }
+export interface Author {
+    _id: string;
+    displayName: string
+}
 export interface PictureApi {
     _id: string;
     title: string;

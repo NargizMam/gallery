@@ -3,14 +3,10 @@ import GalleryCard from "./GalleryCard";
 import {useAppDispatch, useAppSelector} from "../../app/hooks.ts";
 import {useEffect} from "react";
 import {getPicturesList} from "./galleryThunk.ts";
-import { useNavigate } from "react-router-dom";
-import {selectUser} from "../users/usersSlice.ts";
 import {selectPicturesList} from "./gallerySlice.ts";
 
 const Home = () => {
     const dispatch = useAppDispatch();
-    const navigate = useNavigate();
-    const user = useAppSelector(selectUser);
     const picturesList = useAppSelector(selectPicturesList);
 
     useEffect(() => {
@@ -29,7 +25,7 @@ const Home = () => {
                         id={picture._id}
                         title={picture.title}
                         image={picture.image}
-                        author={picture.user.displayName}
+                        author={picture.user}
                     />
                 ))}
             </Grid>

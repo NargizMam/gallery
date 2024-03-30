@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const PictureSchema = new Schema({
     user: {
-        type: String,
+        type: Schema.Types.ObjectId,
         required: true,
         ref: 'User',
         validate: {

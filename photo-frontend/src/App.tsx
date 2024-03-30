@@ -5,6 +5,7 @@ import Login from "./features/users/Login.tsx";
 import {Route, Routes} from "react-router-dom";
 import Footer from "./components/Footer/Footer.tsx";
 import Home from "./features/gallery/Home.tsx";
+import UsersGallery from "./features/gallery/UsersGallery.tsx";
 
 
 const App = () => {
@@ -16,9 +17,10 @@ const App = () => {
             </header>
             <Container sx={{ marginBottom: '150px' }}>
                 <Routes>
+                    <Route path="/" element={<Home/>}/>
                     <Route path="/register" element={<Register/>}/>
                     <Route path="/login" element={<Login/>}/>
-                    <Route path="/" element={<Home/>}/>
+                    <Route path="/usersGallery" element={<UsersGallery/>}/>
                     <Route path="*" element={<h1>Not found</h1>}/>
                 </Routes>
             </Container>

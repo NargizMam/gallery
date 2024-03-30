@@ -6,13 +6,12 @@ import { selectPicturesList, selectPicturesListFetching } from "./gallerySlice.t
 import Typography from "@mui/material/Typography";
 import { Box, Button, Grid } from "@mui/material";
 import { selectUser } from "../users/usersSlice.ts";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from 'react-router-dom';
 import Loading from "../../components/UI/Loading/Loading.tsx";
 
 const UsersGallery = () => {
     const dispatch = useAppDispatch();
-    const searchParams = new URLSearchParams(location.search);
-    const id = searchParams.get('users');
+    const {id} = useParams();
     const userClient = useAppSelector(selectUser);
     const usersGallery = useAppSelector(selectPicturesList);
     const fetchingLoading = useAppSelector(selectPicturesListFetching);

@@ -85,14 +85,14 @@ const GalleryCard: React.FC<Props> = ({id, title, user, image, isUsersActions}) 
                         title={title}/>
                 </CardActionArea>
                 <CardContent>
-                    <Typography variant="body2" color="textSecondary" component="p">
+                    <Typography variant="body2" color="textSecondary" component="p" >
                         Author:
                         <Typography
                             component={NavLink}
-                            to={!isUsersActions ? `/usersGallery?users=${user?._id}` : ''}
+                            to={!isUsersActions ? `/usersGallery/${user?._id}` : ''}
                             variant="h6"
                         >
-                            {user.displayName}
+                           <span></span> {user.displayName}
                         </Typography>
                     </Typography>
                 </CardContent>

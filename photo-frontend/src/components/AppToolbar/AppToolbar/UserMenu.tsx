@@ -66,7 +66,7 @@ const UserMenu: React.FC<Props> = ({user}) => {
             onClose={handleClose}
         >
             <MenuItem component={NavLink} to="/new-picture">Add new photo</MenuItem>
-            <MenuItem component={NavLink} to={`/usersGallery?users=${user._id}`}>My photos</MenuItem>
+            <MenuItem component={NavLink} to={`/usersGallery/${user._id}`}>My photos</MenuItem>
         </Menu>
         <Button onClick={logOuted}>Logout<ExitToAppIcon/>
           </Button>

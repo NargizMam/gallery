@@ -1,4 +1,5 @@
 import { Model } from 'mongoose';
+import {resolveSrv} from "dns";
 
 export interface UserFields {
   email: string;
@@ -16,19 +17,15 @@ export interface UserMethods {
 }
 export type UserModal = Model<UserFields, {}, UserMethods>;
 
-export interface Ingredient {
-  title: string;
-  amount: string;
-}
-export interface CocktailApi {
+export interface Author {
   _id: string;
-  user: string;
-  title: string;
-  image: string | null;
-  recipe: string;
-  isPublished: boolean;
-  ingredients: Ingredient[];
+  displayName: string
 }
-
-export type CocktailMutation = Omit<CocktailApi, '_id' | 'isPublished'>;
-export type CocktailForList = Omit<CocktailApi, 'recipe' | 'ingredients'>;
+export interface PictureApi {
+  _id: string;
+  title: string;
+  image: string;
+  author: Author;
+  createdAt: string;
+}
+export type PictureMutation = Omit<PictureApi, "_id" | "createdAt">

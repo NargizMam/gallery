@@ -4,6 +4,7 @@ import Register from "./features/users/Register.tsx";
 import Login from "./features/users/Login.tsx";
 import {Route, Routes} from "react-router-dom";
 import Footer from "./components/Footer/Footer.tsx";
+import Home from "./features/gallery/Home.tsx";
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
                 <Routes>
                     <Route path="/register" element={<Register/>}/>
                     <Route path="/login" element={<Login/>}/>
+                    <Route path="/" element={<Home/>}/>
                     <Route path="*" element={<h1>Not found</h1>}/>
                 </Routes>
             </Container>

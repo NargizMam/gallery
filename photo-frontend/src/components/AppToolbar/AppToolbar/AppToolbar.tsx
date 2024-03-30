@@ -20,7 +20,6 @@ const AppToolbar = () => {
             backgroundColor: '#dfe2e3',
             display: {xs: 'flex'},
             flexGrow: 1,
-            fontFamily: 'monospace',
             fontWeight: 700,
             letterSpacing: '.3rem',
             textDecoration: 'none',
@@ -33,10 +32,6 @@ const AppToolbar = () => {
                         sx={{
                             mr: 2,
                             display: {xs: 'flex'},
-                            flexGrow: 1,
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
                             textDecoration: 'none',
                         }}
                     >

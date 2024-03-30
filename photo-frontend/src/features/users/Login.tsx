@@ -32,6 +32,8 @@ const Login = () => {
     await dispatch(login(state)).unwrap();
     navigate('/');
   };
+  const fieldsError = !state.email.trim() || !state.password.trim();
+
   const googleLoginHandler = async (credential: string) => {
     await dispatch(googleLogin(credential)).unwrap();
     navigate('/');
@@ -72,6 +74,7 @@ const Login = () => {
             <Grid item xs={12}>
               <TextField
                 label="E-mail"
+                type='email'
                 name="email"
                 autoComplete="current-email"
                 value={state.email}
@@ -91,6 +94,7 @@ const Login = () => {
           </Grid>
           <LoadingButton
             type="submit"
+            disabled={fieldsError}
             fullWidth
             loading={loginLoading}
             variant="contained"

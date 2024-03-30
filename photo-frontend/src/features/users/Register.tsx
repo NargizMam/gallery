@@ -30,7 +30,7 @@ const Register = () => {
     displayName: '',
     avatar: ''
   });
-  const fieldsError = !state.email || !state.password || !state.displayName || !state.avatar;
+  const fieldsError = !state.email.trim() || !state.password.trim() || !state.displayName.trim() || !state.avatar;
   const getFieldError = (fieldName: string) => {
     try {
       return registerError?.errors[fieldName].message;

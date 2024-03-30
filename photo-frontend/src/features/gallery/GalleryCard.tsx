@@ -76,13 +76,14 @@ const GalleryCard: React.FC<Props> = ({id, title, user, image, isUsersActions}) 
     return (
         <>
             <Card
-                sx={{width: '35%', height: '300px', m: 2, p: 2, alignItems: 'center', textDecoration: 'none', borderRadius: 2}}>
+                sx={{width: '30%', height: '350px', m: 2, p: 2, alignItems: 'center', textDecoration: 'none', borderRadius: 2}}>
                 <CardActionArea onClick={handleOpen}>
                     <CardMedia
                         component="img"
                         sx={{width: '95%', height: 150, borderRadius: 1}}
                         image={cardImage}
                         title={title}/>
+                  <CardContent style={{ fontSize: '24px' }}>{title}</CardContent>
                 </CardActionArea>
                 <CardContent>
                     <Typography variant="body2" color="textSecondary" component="p" >

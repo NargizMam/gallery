@@ -18,7 +18,7 @@ const Home = () => {
     return (
         <>
             <Typography variant="h4" align="center" gutterBottom>
-                Импрессии в Объективе: <br /> "Погружение в Мир Фотографий"
+              Impressions in the Lens: <br /> "Dive into the World of Photographs"
             </Typography>
             {fetchingLoading && <Loading/>}
             <Grid container>

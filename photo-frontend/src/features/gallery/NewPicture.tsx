@@ -1,9 +1,9 @@
 import {LoadingButton} from "@mui/lab";
-import {Grid, TextField, Typography} from "@mui/material";
+import { Button, Grid, TextField, Typography } from '@mui/material';
 import React, {useState} from "react";
 import FileInput from "../../components/UI/FileInput/FileInput.tsx";
 import {useAppDispatch, useAppSelector} from "../../app/hooks.ts";
-import {useNavigate} from "react-router-dom";
+import { NavLink, useNavigate } from 'react-router-dom';
 import {selectPicturesCreating} from "./gallerySlice.ts";
 import {createPicture, getPicturesList} from "./galleryThunk.ts";
 import {openErrorMessage, openSuccessMessage} from "../WarningMessage/warningMessageSlice.ts";
@@ -28,7 +28,7 @@ const NewPicture = () => {
             return {...prevState, [name]: value};
         });
     };
-    const fieldsError = !picture.title || !picture.image;
+  const fieldsError = ((!picture.title || !picture.title.trim()) || !picture.image);
     const fileInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, files} = e.target;
         if (files) {
@@ -82,6 +82,13 @@ const NewPicture = () => {
                         type="submit">
                         Create
                     </LoadingButton>
+                  <Button
+                    component={NavLink}
+                    to='/'
+                    variant="contained"
+                    type="button">
+                    Come back
+                  </Button>
                 </Grid>
             </form>
         </Grid>

@@ -1,12 +1,12 @@
 import GalleryCard from "./GalleryCard";
-import {useAppDispatch, useAppSelector} from "../../app/hooks.ts";
-import {useEffect, useState} from "react";
-import {getPicturesList} from "./galleryThunk.ts";
-import {selectPicturesList, selectPicturesListFetching} from "./gallerySlice.ts";
+import { useAppDispatch, useAppSelector } from "../../app/hooks.ts";
+import { useEffect, useState } from "react";
+import { getPicturesList } from "./galleryThunk.ts";
+import { selectPicturesList, selectPicturesListFetching } from "./gallerySlice.ts";
 import Typography from "@mui/material/Typography";
-import {Box, Button, Grid} from "@mui/material";
-import {selectUser} from "../users/usersSlice.ts";
-import {NavLink} from "react-router-dom";
+import { Box, Button, Grid } from "@mui/material";
+import { selectUser } from "../users/usersSlice.ts";
+import { NavLink } from "react-router-dom";
 import Loading from "../../components/UI/Loading/Loading.tsx";
 
 const UsersGallery = () => {
@@ -51,7 +51,7 @@ const UsersGallery = () => {
                 {addNewPicture}
             </Grid>
             <Grid container>
-                {fetchingLoading && <Loading/>}
+                {fetchingLoading && <Loading />}
                 {usersGallery.map(picture => (
                     <GalleryCard
                         key={picture._id}
@@ -63,7 +63,6 @@ const UsersGallery = () => {
                     />
                 ))}
             </Grid>
-
         </>
     );
 };

@@ -29,7 +29,6 @@ const Home = () => {
                         title={picture.title}
                         image={picture.image}
                         user={picture.user}
-
                     />
                 ))}
             </Grid>

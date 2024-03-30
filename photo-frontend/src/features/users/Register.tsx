@@ -62,11 +62,8 @@ const Register = () => {
     }
   };
   const googleRegisterHandler = async (credential: string) => {
-    try {
-      await dispatch(googleLogin(credential)).unwrap();
-      navigate('/');
-    } catch (e) {
-    }
+    await dispatch(googleLogin(credential)).unwrap();
+    navigate('/');
   };
   return (
     <Container component="main" maxWidth="xs">

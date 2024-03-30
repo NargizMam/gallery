@@ -22,7 +22,7 @@ const App = () => {
             <header>
                 <AppToolbar/>
             </header>
-            <Container sx={{ marginBottom: '150px' }}>
+            <Container sx={{ marginBottom: '150px'}}>
                 <WarningMessage/>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
